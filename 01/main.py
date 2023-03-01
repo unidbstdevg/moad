@@ -83,6 +83,16 @@ def plot_data(days, views, regs):
     plt.show()
 
 
+def plot_f(views, regs, f):
+    plt.xlabel("views")
+    plt.ylabel("regs")
+
+    plt.plot(views, regs, "o", label="data")
+    plt.plot(views, [f(x) for x in views], label="f")
+    plt.legend()
+    plt.show()
+
+
 days, views, regs = read_csv(DATA_FILENAME)
 plot_data(days, views, regs)
 
@@ -105,3 +115,4 @@ b = calc_B(views, regs)
 print("b =", b)
 
 f = lambda x: a * x + b
+plot_f(views, regs, f)
