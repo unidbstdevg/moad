@@ -70,7 +70,21 @@ def calc_B(a, b):
     return avg(b) - (avg(a) * calc_A(a, b))
 
 
+def plot_data(days, views, regs):
+    ax = plt.gca()
+    ax2 = ax.twinx()
+
+    plt.xlabel("days")
+
+    ax.plot(days, views, "C1", label="views")
+    ax.legend(loc=1)
+    ax2.plot(days, regs, "C2", label="regs")
+    ax2.legend(loc=2)
+    plt.show()
+
+
 days, views, regs = read_csv(DATA_FILENAME)
+plot_data(days, views, regs)
 
 mx = avg(views)
 print("mx =", mx)
